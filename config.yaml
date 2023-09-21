@@ -1,0 +1,22 @@
+#   # python main.py -g 2 -d Youshu
+Youshu:
+  dataset_path: './datasets'
+  batch_size: 2048 # the batch size for training and testing
+  topk: [20, 40, 80] # the topks metrics for evaluation
+  neg_num: 1 # number of negatives used for BPR loss. All the experiments use 1.
+  
+  # search hyperparameters
+  embedding_sizes: [64] # the embedding size for user, bundle
+  num_layerss: [2] # number of layers 2
+
+  # the following dropout rates are with respect to the "aug_type", i.e., if aug_type is ED, the following dropout rates are for ED.
+  drop: [0.2] #0.2
+  leaky: [0.05] # 0.05
+  lrs: [1.0e-3] # learning rate
+  l2_regs: [1.0e-2] # the l2 regularization weight: lambda_2 1e-2
+
+
+  epochs: 1500 # number of epochs to train
+  pat: 20 # patient for early stop
+  pre_epoch: 500 # boost training without testing
+  test_interval: 10 # by how many epochs to run the validation and testing.
